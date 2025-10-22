@@ -1,0 +1,58 @@
+import apiClient from './apiClient'
+import type { PaginatedProducts, Product } from './types'
+
+export const productsApi = {
+    getSettings: async () => {
+        const { data } = await apiClient.get('')
+        return data
+    },
+
+
+    async getByCategory(category: string): Promise<PaginatedProducts> {
+        category = 'Summer'
+        const { data } = await apiClient.get<PaginatedProducts>(
+            `/tags/${category}/products`
+        )
+        return data
+    },
+
+    async getProductsOfType(category: string): Promise<PaginatedProducts> {
+        // category = 'Summer'
+        const { data } = await apiClient.get<PaginatedProducts>(
+            `/tags/${category}/products`
+        )
+        return data
+    },
+
+    async getAll(): Promise<Product[]> {
+        const { data } = await apiClient.get<Product[]>('/products')
+        return data
+    },
+
+    async getById(id: number): Promise<Product> {
+        const { data } = await apiClient.get<Product>(`/products/${id}`)
+        return data
+    },
+
+    async getBySKU(sku: string): Promise<Product> {
+        const { data } = await apiClient.get<Product>('/product_search', {
+            params: { sku } // ✅ Must be wrapped in params
+        })
+        return data
+    },
+
+    async create(payload: Partial<Product>): Promise<Product> {
+        const { data } = await apiClient.post<Product>('/products', payload)
+        return data
+    },
+
+    async update(id: number, payload: Partial<Product>): Promise<Product> {
+        const { data } = await apiClient.put<Product>(`/products/${id}`, payload)
+        return data
+    },
+
+    async delete(id: number): Promise<{ message: string }> {
+        const { data } = await apiClient.delete<{ message: string }>(`/products/${id}`)
+        return data
+    },
+}
