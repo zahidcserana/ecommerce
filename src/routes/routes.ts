@@ -1,6 +1,6 @@
 import LandingPage from '../pages/Landing/landing-page.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { categoryRoute, productRoute, handleRouteMeta } from './route-utils'
+import { handleRouteMeta } from './route-utils'
 import {
 	get404PageMeta,
 	getCheckoutPageMeta,
@@ -18,13 +18,13 @@ const routes = [
 		path: '/products',
 		name: 'Products',
 		component: () => import('../pages/Category/category-page.vue'),
-		props: route => ({ category: route.query.category }),
+		props: (route: any) => ({ category: route.query.category }),
 	},
 	{
 		path: '/product/:sku',
 		name: 'Product',
 		component: () => import('../pages/Product/productinfo-page.vue'),
-		props: route => ({ sku: route.params.sku }),
+		props: (route: any) => ({ sku: route.params.sku }),
 	},
 
 	// {
