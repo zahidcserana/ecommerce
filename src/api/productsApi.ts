@@ -24,8 +24,8 @@ export const productsApi = {
         return data
     },
 
-    async getAll(): Promise<Product[]> {
-        const { data } = await apiClient.get<Product[]>('/products')
+    async getAll(): Promise<PaginatedProducts> {
+        const { data } = await apiClient.get<PaginatedProducts>('/products')
         return data
     },
 

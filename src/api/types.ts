@@ -15,6 +15,7 @@ export interface Product {
     notes: string[]
     content: Content[]
     updated_at: string
+    feature_product?: boolean
 }
 
 // Pagination metadata

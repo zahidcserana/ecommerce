@@ -9,9 +9,7 @@ import Grid from './Components/landing-grid.vue'
 </script>
 
 <template>
-	<div
-		class="main-container flex h-full w-screen flex-col items-center bg-white"
-	>
+	<div class="main-container flex h-full w-screen flex-col items-center bg-white">
 		<Navigation color="k-black"/>
 		<main class="h-full w-screen">
 			<LandingHero />

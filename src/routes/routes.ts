@@ -26,13 +26,6 @@ const routes = [
 		component: () => import('../pages/Product/productinfo-page.vue'),
 		props: (route: any) => ({ sku: route.params.sku }),
 	},
-
-	// {
-	// 	path: '/product',
-	// 	name: 'Product',
-	// 	component: () => import('../pages/Product/productinfo-page.vue'),
-	// 	props: route => ({ sku: route.query.sku }),
-	// },
 	{
 		path: '/all',
 		name: 'All',
