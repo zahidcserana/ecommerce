@@ -31,7 +31,7 @@ const appStore = useAppStore()
 					to="/"
 					class="mb-8 cursor-pointer text-4xl font-bold text-white subpixel-antialiased transition duration-300 hover:scale-110 hover:text-k-main md:mb-0 md:text-3xl"
 				>
-					{{ appStore.tenant.company }}
+					{{ appStore.tenant?.company }}
 				</router-link>
 				<nav
 					class="flex flex-col items-center justify-between gap-6 md:flex-row md:items-start md:gap-10"
@@ -67,7 +67,7 @@ const appStore = useAppStore()
 				<p
 					class="mb-10 text-center tracking-wide opacity-70 md:mb-0 md:w-2/3 md:text-left"
 				>
-					{{ appStore.tenant.about }}
+					{{ appStore.tenant?.about }}
 				</p>
 				<nav class="flex flex-row gap-4 md:self-end">
 					<a class="transition duration-300 hover:-translate-y-0.5" href="">

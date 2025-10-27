@@ -3,6 +3,11 @@ import { useCartStore } from './cartStore'
 import { ordersApi } from '../api/ordersApi'
 const cartStore = useCartStore()
 
+interface CartItem {
+  product: { sku: string }
+  amount: number
+}
+
 export const useFormStore = defineStore('form', {
 	state: () => ({
 		bannerState: 'hide',
@@ -23,7 +28,7 @@ export const useFormStore = defineStore('form', {
 			const cartStore = useCartStore()
 
 			// ✅ Convert cart object { key: { product, amount } } → array
-			const orderItems = Object.values(cartStore.cart).map(item => ({
+			const orderItems = Object.values(cartStore.cart as Record<string, CartItem>).map(item => ({
 				sku: item.product.sku,
 				quantity: item.amount,
 			}))
@@ -154,7 +159,7 @@ export const useFormStore = defineStore('form', {
 		// eslint-disable-next-line
 		isValidZip(state: any) {
 			if (state.zip === '') return 'empty'
-			return /^[0-9]{5}(?:-[0-9]{4})?$/.test(state.zip) === true
+			return /^[0-9]{4}(?:-[0-9]{4})?$/.test(state.zip) === true
 				? 'true'
 				: 'false'
 		},

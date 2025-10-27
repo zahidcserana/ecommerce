@@ -27,7 +27,7 @@ const fetchProducts = async () => {
   error.value = null
 
   try {
-    const res = await productsApi.getProductsOfType(category.value)
+    const res = await productsApi.getByCategory(category.value)
     products.value = res.data
   } catch (err: any) {
     console.error('Failed to fetch products:', err)

@@ -22,7 +22,7 @@ const fetchProducts = async () => {
   error.value = null
 
   try {
-    const res = await productsApi.getProductsOfType(props.productCategory)
+    const res = await productsApi.getByCategory(props.productCategory)
 	products.value = res.data
 	filterProducts()
   } catch (err: any) {

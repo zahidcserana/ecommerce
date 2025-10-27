@@ -14,17 +14,17 @@ const featureProducts = appStore.featureProducts
 			<div id="yellowBox" class="flex flex-col items-center overflow-hidden rounded-md bg-k-main text-black md:col-span-full md:row-span-3 md:h-[31rem]">
 				<div class="group order-1 flex h-full w-full flex-col items-center justify-center md:order-none md:grid md:grid-cols-7">
 					<router-link
-						:to="{ name: 'Product', params: { sku: product.sku } }"
+						:to="{ name: 'Product', params: { sku: product?.sku } }"
 						href=""
 						class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden md:col-span-4 md:px-10"
 					>
 						<img
-							:src="product.image_url"
+							:src="product?.image_url"
 							alt=""
 							class="z-20 my-5 aspect-auto translate-x-3 translate-y-3 scale-110 md:my-0 md:translate-x-0 md:translate-y-0 md:scale-125 md:transition md:duration-700 md:group-hover:translate-x-6 md:group-hover:translate-y-6"
 						/>
 						<img
-							:src="product.image_url"
+							:src="product?.image_url"
 							alt=""
 							class="absolute z-10 aspect-auto -translate-x-3 -translate-y-3 scale-110 md:translate-x-0 md:translate-y-0 md:scale-100 md:transition md:duration-700 md:group-hover:-translate-x-6 md:group-hover:-translate-y-6"
 						/>
@@ -43,14 +43,14 @@ const featureProducts = appStore.featureProducts
 					</router-link>
 					<div class="relative z-10 col-span-3 flex h-full w-full flex-col justify-center bg-k-main md:pl-4 md:pr-20 lg:pl-6 lg:pr-24">
 						<h2 class="text-center text-5xl font-semibold uppercase md:text-start lg:text-6xl">
-							{{ product.sku }} <br />
-							{{ product.name }}
+							{{ product?.sku }} <br />
+							{{ product?.name }}
 						</h2>
 						<p class="mb-8 mt-4 text-center tracking-wide md:mb-10 md:text-start">
-							{{ product.description }}
+							{{ product?.description }}
 						</p>
 						<ButtonSolid
-							:to="{ name: 'Product', params: { sku: product.sku } }"
+							:to="{ name: 'Product', params: { sku: product?.sku } }"
 							content="SEE PRODUCT"
 							add="font-semibold hover:rotate-x-3"
 							class="mb-10 self-center md:mb-0 md:self-start"
@@ -71,17 +71,18 @@ const featureProducts = appStore.featureProducts
 			>
 				<img
 					class="scale-150 object-cover grayscale duration-200"
-					:src="featureProducts[0].image_url"
+					:src="featureProducts[0]?.image_url"
 					alt=""
 				/>
 			</router-link>
 			<div class="order-4 col-span-3 row-span-2 overflow-hidden rounded-md bg-k-grey text-black md:order-none md:h-full">
-				<img class="scale-150 object-cover" :src="featureProducts[0].image_url" alt="" />
+				<img class="scale-150 object-cover" :src="product?.image_url" alt="" />
 			</div>
 			<div class="order-5 col-span-3 row-span-2 flex w-full flex-col items-center justify-center gap-6 rounded-md bg-k-grey p-6 text-black md:order-none md:h-full md:items-start md:px-16">
-				<h2 class="text-3xl font-semibold uppercase">{{ featureProducts[0].category }}</h2>
+				<h2 class="text-3xl font-semibold uppercase">{{ product?.category }}</h2>
 				<ButtonEmpty 
-					:to="{ path: '/products', query: { category: featureProducts[0].category } }"
+					v-if="product"
+					:to="`/products?category=${product.category}`"
 					content="see all" 
 				/>
 			</div>

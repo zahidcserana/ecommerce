@@ -21,15 +21,15 @@ const appStore = useAppStore()
 				<h1
 					class="relative mt-4 text-5xl font-semibold uppercase text-white md:text-6xl"
 				>
-					{{ appStore.randomFeatureProduct.sku }} <br class="hidden md:block lg:hidden" />
-					{{ appStore.randomFeatureProduct.name }} <br />
-					{{ appStore.randomFeatureProduct.category }}
+					{{ appStore.randomFeatureProduct?.sku }} <br class="hidden md:block lg:hidden" />
+					{{ appStore.randomFeatureProduct?.name }} <br />
+					{{ appStore.randomFeatureProduct?.category }}
 				</h1>
 				<p class="mb-10 mt-5 md:opacity-90">
-					{{ appStore.randomFeatureProduct.description }}
+					{{ appStore.randomFeatureProduct?.description }}
 				</p>
 				<ButtonSolid
-					:to="{ name: 'Product', params: { sku: appStore.randomFeatureProduct.sku } }"
+					:to="{ name: 'Product', params: { sku: appStore.randomFeatureProduct?.sku } }"
 					content="see product"
 					color="light"
 					add="font-bold mb-20"
@@ -40,7 +40,7 @@ const appStore = useAppStore()
 			>
 				<img
 					class="relative top-12 scale-[175%] md:top-20 md:scale-[175%] lg:top-12 lg:scale-150"
-					:src="appStore.tenant.store_image"
+					:src="appStore.tenant?.store_image"
 					alt=""
 					width="1920"
 					height="1920"

@@ -1,5 +1,5 @@
 import apiClient from './apiClient'
-import type { Order, CartItem, CustomerInfo } from './types'
+import type { Order } from './types'
 
 export const ordersApi = {
   async create(payload: Order): Promise<{ message: string; order_id: number }> {

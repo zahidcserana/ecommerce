@@ -16,6 +16,7 @@ export interface Product {
     content: Content[]
     updated_at: string
     feature_product?: boolean
+    image_url: string
 }
 
 // Pagination metadata
@@ -88,8 +89,12 @@ export interface Tenant {
     id: number
     name: string
     company: string
+    about: string
+    moto: string
     slug: string
     store_domain: string
+    store_image: string
+    image: string
 }
 
 export interface Tag {
@@ -97,6 +102,7 @@ export interface Tag {
     name: string
     product_count?: number
     products?: Product[]
+    feature_product: Product
 }
 
 export interface Settings {
