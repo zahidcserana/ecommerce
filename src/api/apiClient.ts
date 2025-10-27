@@ -1,12 +1,17 @@
 // src/api/apiClient.ts
 import axios from 'axios'
-const domain = 'http://localhost/AJ/packiyo-new/public/api/storefront/'
-const store = 'ahlansahlan'
-const base_url = domain + store
+// const domain = 'http://localhost/AJ/packiyo-new/public/api/storefront/'
+// const store = 'ahlansahlan'
+// const base_url = domain + store
 // const base_url_default = 'http://127.0.0.1:8000/api'
 
+// Read from Vite environment variables
+const baseURL =
+  import.meta.env.VITE_BASE_URL_API ||
+  'http://127.0.0.1:8000/api/storefront' // fallback
+
 const apiClient = axios.create({
-  baseURL: base_url, // Laravel API base
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
