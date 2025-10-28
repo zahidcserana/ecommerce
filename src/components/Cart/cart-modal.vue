@@ -56,7 +56,7 @@ const cartStore = useCartStore()
 					data-test="cart-item-container"
 				>
 					<CartItem
-						v-for="(value, _, index) in cartStore.cart"
+						v-for="(value, index) in cartStore.cart"
 						:cart-item="value.product"
 						:item-count="value.amount"
 						:key="index"
