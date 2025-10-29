@@ -67,7 +67,7 @@ export const useFormStore = defineStore('form', {
 
 				// clear cart or show banner
 				this.bannerOn()
-				cartStore.clearCart?.() // optional if you have a clearCart action
+				// cartStore.clearCart?.() // optional if you have a clearCart action
 
 			} catch (err: any) {
 				console.error('❌ Order submission failed:', err)

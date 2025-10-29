@@ -112,8 +112,6 @@ export const useCartStore = defineStore('cart', {
 		},
 		// eslint-disable-next-line
 		getFirstItem(state: any) {
-			console.log('state.cart', state.cart);
-			
 			return state.cart[Object.keys(state.cart)[0]]
 		},
 		// eslint-disable-next-line
