@@ -21,7 +21,7 @@ const props = defineProps<{
 			class="flex flex-col items-center pb-6 lg:col-span-1 lg:col-start-2 lg:row-span-full lg:ml-24 lg:items-start lg:justify-center"
 		>
 			<p
-				v-if="props.item?.is_new"
+				v-if="props.item.feature_product"
 				class="lg:text-md text-sm uppercase tracking-broad text-black"
 			>
 				new product

@@ -1,11 +1,11 @@
 // 📄 /pinia/appStore.ts
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Tenant, Tag, Settings, Product } from '@/api/types'
+import type { Tenant, Tag, Settings, Product } from '../api/types'
 import { productsApi } from '../api/productsApi'
 
 export const useAppStore = defineStore('app', () => {
-    const tenant = ref<Tenant | null>(null)
+    const tenant = ref<Tenant>()
     const tags = ref<Tag[]>([])
     const settings = ref<Settings | null>(null)
     const loading = ref(false)

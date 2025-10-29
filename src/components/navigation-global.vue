@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import cartIcon from '/icons/cart-icon.svg'
+import cartIcon from '/public/icons/cart-icon.svg'
 import Cart from './Cart/cart-modal.vue'
 import { computed, ref } from 'vue'
 import { useCartStore } from '../pinia/cartStore.ts'
@@ -94,18 +94,6 @@ function hideHamburger(): void {
 					data-test="nav-keyboards"
 					>{{ category }}
 				</router-link>
-				<!-- <router-link
-					to="/keycaps"
-					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
-					data-test="nav-keycaps"
-					>Keycaps
-				</router-link>
-				<router-link
-					to="/deskmats"
-					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
-					data-test="nav-deskmats"
-					>Deskmats
-				</router-link> -->
 			</nav>
 			<div
 				class="relative h-5 cursor-pointer"
@@ -152,6 +140,14 @@ function hideHamburger(): void {
 					>Home
 				</router-link>
 				<router-link
+					to="/all"
+					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
+					:class="$route.path === '/all' && 'hidden'"
+					@click="hideHamburger()"
+					data-test="mobile-nav-keycaps"
+					>Product
+				</router-link>
+				<router-link
 					v-for="category in appStore.categories"
 					:to="{ path: '/products', query: { category: category } }"
 					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
@@ -160,22 +156,6 @@ function hideHamburger(): void {
 					data-test="mobile-nav-keyboards"
 					>{{ category }}
 				</router-link>
-				<!-- <router-link
-					to="/keycaps"
-					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
-					:class="$route.path === '/keycaps' && 'hidden'"
-					@click="hideHamburger()"
-					data-test="mobile-nav-keycaps"
-					>Keycaps
-				</router-link>
-				<router-link
-					to="/deskmats"
-					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
-					:class="$route.path === '/deskmats' && 'hidden'"
-					@click="hideHamburger()"
-					data-test="mobile-nav-deskmats"
-					>Deskmats
-				</router-link> -->
 			</nav>
 		</transition>
 	</header>

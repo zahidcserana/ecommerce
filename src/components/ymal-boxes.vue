@@ -1,41 +1,30 @@
 <script setup lang="ts">
-import { product } from '../data/product-types.ts'
-import { getSelection } from '../data/product-utils.ts'
-import { onBeforeMount, onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import ButtonSolid from '../components/Buttons/button-solid.vue'
 import { productsApi } from '../api/productsApi.ts';
 import { Product } from '../api/types.ts';
-import { useRoute } from 'vue-router';
 
 const props = defineProps<{
 	productCategory: string
 	productId: number
 }>()
 
-// let items: product[] = []
-
-onBeforeMount(() => {
-	// items = getSelection(props.productCategory, props.productId)
-})
-
-
-
-// State
 const items = ref<Product[]>([])
+const products = ref<Product[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
 
 // Fetch products by category
 const fetchProducts = async () => {
-//   const category = route.query.category as string | undefined
   if (!props.productCategory) return
 
   loading.value = true
   error.value = null
 
   try {
-    const res = await productsApi.getProductsOfType(props.productCategory)
-    items.value = res.data
+    const res = await productsApi.getByCategory(props.productCategory)
+	products.value = res.data
+	filterProducts()
   } catch (err: any) {
     console.error('Failed to fetch products:', err)
     error.value = 'Unable to load products.'
@@ -47,8 +36,15 @@ const fetchProducts = async () => {
 // Initial load
 onMounted(fetchProducts)
 
+const filterProducts = async () => {
+	items.value = products.value.filter(
+			(row: Product) => row.id !== props.productId
+		)
+}
+
 // Refetch when category changes
 watch(() => props.productCategory, fetchProducts)
+watch(() => props.productId, filterProducts)
 </script>
 
 <template>
@@ -56,9 +52,7 @@ watch(() => props.productCategory, fetchProducts)
 		<h2 class="mb-16 font-Manrope text-3xl font-bold uppercase text-black">
 			You may also like
 		</h2>
-		<div
-			class="flex flex-col items-center gap-12 lg:grid lg:grid-cols-3 lg:grid-rows-1 lg:gap-6"
-		>
+		<div class="flex flex-col items-center gap-12 lg:grid lg:grid-cols-3 lg:grid-rows-1 lg:gap-6">
 			<div
 				class="flex flex-col items-center justify-between gap-8 lg:gap-10"
 				v-for="(item, index) in items"

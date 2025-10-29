@@ -36,9 +36,7 @@ onBeforeUnmount(() => {
 			<div
 				class="relative z-10 mx-4 mt-6 flex flex-col rounded-md bg-white p-10 md:mt-20 md:p-12"
 			>
-				<div
-					class="absolute right-10 flex h-10 w-10 flex-shrink-0 flex-row items-center justify-center rounded-full bg-k-main md:static lg:h-20 lg:w-20"
-				>
+				<div class="absolute right-10 flex h-10 w-10 flex-shrink-0 flex-row items-center justify-center rounded-full bg-k-main md:static lg:h-20 lg:w-20">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -54,31 +52,24 @@ onBeforeUnmount(() => {
 						/>
 					</svg>
 				</div>
-				<h2
-					class="text-2xl font-bold uppercase text-black md:mt-6 lg:mt-8 lg:text-3xl"
-				>
+				<h2 class="text-2xl font-bold uppercase text-black md:mt-6 lg:mt-8 lg:text-3xl">
 					thank you <br />
 					for your order
 				</h2>
-				<p
-					class="text-md mt-4 font-semibold text-black opacity-60 lg:mt-6 lg:text-lg"
-				>
+				<p class="text-md mt-4 font-semibold text-black opacity-60 lg:mt-6 lg:text-lg">
 					You will receive an email confirmation shortly.
 				</p>
-				<div
-					class="mb-4 mt-6 flex h-full w-full flex-col overflow-hidden rounded-lg lg:mb-6 lg:mt-8 lg:flex-row lg:items-center"
-				>
-					<div
-						class="flex h-full w-full flex-col justify-center bg-k-grey px-4 py-6 lg:basis-4/6"
-					>
+				<div class="mb-4 mt-6 flex h-full w-full flex-col overflow-hidden rounded-lg lg:mb-6 lg:mt-8 lg:flex-row lg:items-center">
+					<div class="flex h-full w-full flex-col justify-center bg-k-grey px-4 py-6 lg:basis-4/6">
 						<div class="flex h-full w-full flex-row items-center">
 							<img
+								v-if="cartStore.getFirstItem && cartStore.getFirstItem.product"
 								class="aspect-square h-24"
 								:src="cartStore.getFirstItem.product.images[0]"
 								alt=""
 								loading="lazy"
 							/>
-							<div class="ml-3 flex flex-col items-start justify-center">
+							<div v-if="cartStore.getFirstItem && cartStore.getFirstItem.product" class="ml-3 flex flex-col items-start justify-center">
 								<p class="text-lg font-bold text-black">
 									{{ cartStore.getFirstItem.product.name }}
 								</p>
@@ -86,9 +77,7 @@ onBeforeUnmount(() => {
 									${{ cartStore.getFirstItem.product.price }}
 								</p>
 							</div>
-							<p
-								class="ml-auto place-self-center text-lg font-bold text-black opacity-60"
-							>
+							<p v-if="cartStore.getFirstItem && cartStore.getFirstItem.product" class="ml-auto place-self-center text-lg font-bold text-black opacity-60">
 								x{{ cartStore.getFirstItem.amount }}
 							</p>
 						</div>
@@ -97,19 +86,12 @@ onBeforeUnmount(() => {
 							v-if="cartStore.getUniqueItems > 1"
 							class="mt-2 text-center font-semibold text-black opacity-70"
 						>
-							and {{ cartStore.getUniqueItems - 1 }} other item<span
-								v-show="cartStore.getUniqueItems > 2"
-								>s</span
-							>
+							and {{ cartStore.getUniqueItems - 1 }} other item<span v-show="cartStore.getUniqueItems > 2">s</span>
 						</p>
 					</div>
-					<div
-						class="flex flex-col justify-center bg-black px-6 py-6 lg:h-full lg:basis-2/6"
-					>
+					<div class="flex flex-col justify-center bg-black px-6 py-6 lg:h-full lg:basis-2/6">
 						<div>
-							<p
-								class="text-md font-semibold uppercase tracking-wide opacity-90"
-							>
+							<p class="text-md font-semibold uppercase tracking-wide opacity-90">
 								Grand Total
 							</p>
 							<p class="text-md font-semibold lg:text-lg">

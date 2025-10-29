@@ -16,17 +16,18 @@ const route = useRoute()
 const products = ref<Product[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
+const category = ref()
 
 // Fetch products by category
 const fetchProducts = async () => {
-  const category = route.query.category as string | undefined
-  if (!category) return
+  category.value = route.query.category as string | undefined
+  if (!category.value) return
 
   loading.value = true
   error.value = null
 
   try {
-    const res = await productsApi.getProductsOfType(category)
+    const res = await productsApi.getByCategory(category.value)
     products.value = res.data
   } catch (err: any) {
     console.error('Failed to fetch products:', err)
@@ -49,7 +50,7 @@ watch(() => route.query.category, fetchProducts)
   <header class="flex w-full flex-col items-center bg-black lg:rounded-b-lg">
     <div class="my-10 flex w-4/5 max-w-6xl flex-col items-center justify-center lg:my-20">
       <h1 class="text-4xl font-semibold uppercase tracking-wider text-white antialiased">
-        {{ route.query.category || 'Products' }}
+        {{ category || 'Products' }}
       </h1>
     </div>
   </header>
@@ -64,7 +65,7 @@ watch(() => route.query.category, fetchProducts)
           v-for="product in products"
           :key="product.id"
           :item="product"
-          :category="route.query.category"
+          :category="category"
           :data-test="`showbox-${product.sku}-${product.id}`"
         />
       </div>

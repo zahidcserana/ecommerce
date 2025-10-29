@@ -7,25 +7,15 @@ export const productsApi = {
         return data
     },
 
-
     async getByCategory(category: string): Promise<PaginatedProducts> {
-        category = 'Summer'
         const { data } = await apiClient.get<PaginatedProducts>(
-            `/tags/${category}/products`
+            `/tag_products/${category}`
         )
         return data
     },
 
-    async getProductsOfType(category: string): Promise<PaginatedProducts> {
-        // category = 'Summer'
-        const { data } = await apiClient.get<PaginatedProducts>(
-            `/tags/${category}/products`
-        )
-        return data
-    },
-
-    async getAll(): Promise<Product[]> {
-        const { data } = await apiClient.get<Product[]>('/products')
+    async getAll(): Promise<PaginatedProducts> {
+        const { data } = await apiClient.get<PaginatedProducts>('/products')
         return data
     },
 

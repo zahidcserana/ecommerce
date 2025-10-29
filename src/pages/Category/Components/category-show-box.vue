@@ -33,7 +33,7 @@ onMounted(() => {
 			:class="flip === true ? 'md:col-start-1' : 'md:col-start-2'"
 		>
 			<p
-				v-if="props.item?.nu"
+				v-if="props.item?.feature_product"
 				class="md:text-md text-sm font-light uppercase tracking-broad text-black"
 			>
 				new product

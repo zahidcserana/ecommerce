@@ -31,7 +31,7 @@ export const useCartStore = defineStore('cart', {
 			document.body.classList.remove('overflow-y-hidden')
 		},
 
-		addToCart(item: product) {
+		addToCart(item: Product) {
 			const itemKey = item.category + item.id + ''
 			if (itemKey in this.cart) {
 				this.cart[itemKey].amount = this.cart[itemKey].amount + 1
