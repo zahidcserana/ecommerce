@@ -63,12 +63,13 @@ onBeforeUnmount(() => {
 					<div class="flex h-full w-full flex-col justify-center bg-k-grey px-4 py-6 lg:basis-4/6">
 						<div class="flex h-full w-full flex-row items-center">
 							<img
+								v-if="cartStore.getFirstItem && cartStore.getFirstItem.product"
 								class="aspect-square h-24"
 								:src="cartStore.getFirstItem.product.images[0]"
 								alt=""
 								loading="lazy"
 							/>
-							<div class="ml-3 flex flex-col items-start justify-center">
+							<div v-if="cartStore.getFirstItem && cartStore.getFirstItem.product" class="ml-3 flex flex-col items-start justify-center">
 								<p class="text-lg font-bold text-black">
 									{{ cartStore.getFirstItem.product.name }}
 								</p>
@@ -76,7 +77,7 @@ onBeforeUnmount(() => {
 									${{ cartStore.getFirstItem.product.price }}
 								</p>
 							</div>
-							<p class="ml-auto place-self-center text-lg font-bold text-black opacity-60">
+							<p v-if="cartStore.getFirstItem && cartStore.getFirstItem.product" class="ml-auto place-self-center text-lg font-bold text-black opacity-60">
 								x{{ cartStore.getFirstItem.amount }}
 							</p>
 						</div>
