@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import cartIcon from '/icons/cart-icon.svg'
+import cartIcon from '/public/icons/cart-icon.svg'
 import Cart from './Cart/cart-modal.vue'
 import { computed, ref } from 'vue'
 import { useCartStore } from '../pinia/cartStore.ts'

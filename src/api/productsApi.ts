@@ -9,7 +9,7 @@ export const productsApi = {
 
     async getByCategory(category: string): Promise<PaginatedProducts> {
         const { data } = await apiClient.get<PaginatedProducts>(
-            `/tags/${category}/products`
+            `/tag_products/${category}`
         )
         return data
     },

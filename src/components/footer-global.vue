@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import facebookIcon from '/icons/facebook.svg'
-import twitterIcon from '/icons/twitter.svg'
-import instagramIcon from '/icons/instagram.svg'
+import facebookIcon from '/public/icons/facebook.svg'
+import twitterIcon from '/public/icons/twitter.svg'
+import instagramIcon from '/public/icons/instagram.svg'
 import { useAppStore } from '../pinia/appStore'
 
 const appStore = useAppStore()
