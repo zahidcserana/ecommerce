@@ -21,12 +21,12 @@ const appStore = useAppStore()
 				<h1
 					class="relative mt-4 text-5xl font-semibold uppercase text-white md:text-6xl"
 				>
-					{{ appStore.randomFeatureProduct?.sku }} <br class="hidden md:block lg:hidden" />
-					{{ appStore.randomFeatureProduct?.name }} <br />
-					{{ appStore.randomFeatureProduct?.category }}
+					{{ appStore.randomFeatureProduct?.name }} 
+					<br class="hidden md:block" />
+					<span class="text-lg">Code: {{ appStore.randomFeatureProduct?.sku  }}</span>
 				</h1>
 				<p class="mb-10 mt-5 md:opacity-90">
-					{{ appStore.randomFeatureProduct?.description }}
+					<span class="text-lg">Category: {{ appStore.randomFeatureProduct?.category }}</span>
 				</p>
 				<ButtonSolid
 					:to="{ name: 'Product', params: { sku: appStore.randomFeatureProduct?.sku } }"

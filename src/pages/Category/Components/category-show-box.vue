@@ -42,12 +42,12 @@ onMounted(() => {
 				class="mt-4 text-center text-4xl font-semibold uppercase text-black md:text-start md:text-5xl lg:text-6xl"
 			>
 				{{ props.item.name }} <br class="hidden md:block" />
-				{{ props.item.sku }}
+				<span class="text-lg">Code: {{ props.item.sku }}</span>
 			</h1>
 			<p
 				class="mb-10 mt-4 text-center text-black opacity-60 md:pr-20 md:text-start"
 			>
-				{{ props.item.description }}
+				<span class="text-lg">Category: {{ props.item.category }}</span>
 			</p>
 			<div
 				class="flex flex-row items-center justify-center gap-4 md:justify-normal"
