@@ -47,9 +47,7 @@ watch(() => props.sku, fetchProduct)
       <Core :item="item" />
       <Features :features="item.description" :inthebox="item.content" />
       <Grid
-        :topSrc="item.images[0]"
-        :botSrc="item.images[0]"
-        :rightSrc="item.images[0]"
+        :images="item.images"
       />
       <Ymal v-if="item.category" :productCategory="item.category" :productId="item.id" />
       <Info />
