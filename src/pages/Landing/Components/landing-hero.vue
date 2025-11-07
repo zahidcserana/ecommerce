@@ -36,7 +36,7 @@ const appStore = useAppStore()
 				/>
 			</div>
 			<div
-				class="absolute bottom-0 z-0 aspect-auto w-full opacity-30 md:relative md:z-10 md:opacity-100"
+				class="absolute bottom-0 z-0 aspect-auto w-full opacity-30 md:relative md:z-9 md:opacity-100"
 			>
 				<img
 					class="relative top-12 scale-[175%] md:top-20 md:scale-[175%] lg:top-12 lg:scale-150"
