@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
+import NavigationCategory from '../../../components/navigation-category.vue'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -81,6 +82,7 @@ const handleMouseLeave = () => {
       </SwiperSlide>
     </Swiper>
   </section>
+  <NavigationCategory color="k-black"/>
 </template>
 
 <style scoped>

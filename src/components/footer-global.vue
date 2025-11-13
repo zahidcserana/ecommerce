@@ -9,6 +9,7 @@ const appStore = useAppStore()
 
 <template>
 	<footer
+		id="footer-div"
 		class="relative mt-20 flex h-full w-screen flex-col items-center bg-black md:mt-32 lg:mt-40"
 	>
 		<div

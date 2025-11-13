@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import cartIcon from '/public/icons/cart-icon.svg'
 import Cart from './Cart/cart-modal.vue'
 import { computed, ref } from 'vue'
 import { useCartStore } from '../pinia/cartStore.ts'
@@ -32,13 +31,6 @@ function showHamburger(): void {
 
 function hideHamburger(): void {
 	hamburgerState.value = 'hide'
-}
-
-function scrollToFooter() {
-  const footer = document.getElementById('footer-div')
-  if (footer) {
-    footer.scrollIntoView({ behavior: 'smooth' })
-  }
 }
 </script>
 
@@ -78,56 +70,18 @@ function scrollToFooter() {
 				class="text-3xl font-extrabold tracking-tight antialiased transition duration-300 hover:scale-110 hover:text-k-main"
 				data-test="nav-logo"
 			>
-				{{ appStore.tenant?.company }}
+				Categoy
 			</router-link>
 
 			<nav class="hidden tracking-widest lg:flex lg:gap-8">
 				<router-link
-					to="/"
-					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
-					data-test="nav-home"
-				>Home
-				</router-link>
-				<router-link
-					to="/all"
-					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
-					data-test="nav-home"
-				>Product
-				</router-link>
-				<button
-					@click="scrollToFooter"
-					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
-				>Contract
-				</button>
-
-				<!-- <router-link
 					v-for="category in appStore.categories"
 					:to="{ path: '/products', query: { category: category } }"
 					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
 					data-test="nav-keyboards"
 					>{{ category }}
-				</router-link> -->
+				</router-link>
 			</nav>
-			<div
-				class="relative h-5 cursor-pointer"
-				@click="cartStore.cartOn()"
-				data-test="cart-button"
-			>
-				<img
-					class="h-full hover:opacity-50 active:translate-y-0.5"
-					:src="cartIcon"
-					alt=""
-				/>
-				<Transition>
-					<div
-						v-show="cartStore.cartLength !== 0"
-						class="absolute -right-2 top-3 flex h-4 w-4 flex-col items-center justify-center rounded-full bg-red-600 text-xs font-black transition-all duration-300"
-						data-test="cart-bubble"
-					>
-						{{ cartStore.cartLength }}
-					</div>
-				</Transition>
-			</div>
 		</div>
 		<Cart v-show="cartStore.showCart" />
 		<transition>
