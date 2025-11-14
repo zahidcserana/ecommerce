@@ -8,7 +8,7 @@ const appStore = useAppStore();
 </script>
 
 <template>
-  <footer class="relative mt-20 w-full bg-black text-white md:mt-32 lg:mt-40">
+  <footer id="footer-div" class="relative mt-20 w-full bg-black text-white md:mt-32 lg:mt-40">
     <!-- Top Gradient Strip -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 h-1 w-32 bg-gradient-to-r from-k-main to-k-accent rounded-full"></div>
 
@@ -90,9 +90,7 @@ const appStore = useAppStore();
       <!-- Copyright -->
      <p class="text-center text-sm font-semibold text-white/60 md:text-left">
 		&copy; 
-		<a href="https://analyticalj.com/" target="_blank" class="text-k-main hover:underline">
-			AnalyticalJ
-		</a>
+		<a href="https://analyticalj.com/" target="_blank" class="text-k-main hover:underline">AnalyticalJ</a>
 		All right reserved.
 	</p>
     </div>

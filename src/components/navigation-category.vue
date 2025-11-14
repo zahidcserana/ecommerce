@@ -98,7 +98,7 @@ function hideHamburger(): void {
 				>
 					Close
 				</button>
-				<router-link
+				<!-- <router-link
 					to="/"
 					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
 					:class="$route.path === '/' && 'hidden'"
@@ -113,7 +113,7 @@ function hideHamburger(): void {
 					@click="hideHamburger()"
 					data-test="mobile-nav-keycaps"
 					>Product
-				</router-link>
+				</router-link> -->
 				<router-link
 					v-for="category in appStore.categories"
 					:to="{ path: '/products', query: { category: category } }"

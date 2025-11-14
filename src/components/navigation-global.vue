@@ -160,7 +160,12 @@ function scrollToFooter() {
 					data-test="mobile-nav-keycaps"
 					>Product
 				</router-link>
-				<router-link
+				<button
+					@click="scrollToFooter"
+					class="uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5"
+				>Contract
+				</button>
+				<!-- <router-link
 					v-for="category in appStore.categories"
 					:to="{ path: '/products', query: { category: category } }"
 					class="lg:text-md uppercase text-white transition duration-300 hover:text-k-main active:translate-y-0.5 md:text-lg"
@@ -168,7 +173,7 @@ function scrollToFooter() {
 					@click="hideHamburger()"
 					data-test="mobile-nav-keyboards"
 					>{{ category }}
-				</router-link>
+				</router-link> -->
 			</nav>
 		</transition>
 	</header>

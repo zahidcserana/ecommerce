@@ -63,7 +63,7 @@ const handleMouseLeave = () => {
             class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center text-white"
           >
             <h1 class="text-4xl md:text-6xl font-bold uppercase drop-shadow-lg">
-              {{ appStore.tenant?.name }}
+              {{ appStore.tenant?.company }}
             </h1>
             <p class="mt-3 text-lg opacity-90">
               {{ appStore.tenant?.store_tagline || 'Welcome to our store' }}
