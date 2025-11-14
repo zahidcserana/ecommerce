@@ -73,12 +73,16 @@ function scrollToFooter() {
 					/>
 				</svg>
 			</button>
-			<router-link
-				to="/"
-				class="text-3xl font-extrabold tracking-tight antialiased transition duration-300 hover:scale-110 hover:text-k-main"
-				data-test="nav-logo"
-			>
-				{{ appStore.tenant?.company }}
+			<router-link to="/" data-test="nav-logo" class="transition-transform duration-300 hover:scale-110">
+				<img
+					v-if="appStore.tenant?.image"
+					:src="appStore.tenant.image"
+					alt="Company Logo"
+					class="h-10 md:h-12"
+				/>
+				<span v-else class="text-3xl font-extrabold tracking-tight antialiased text-white">
+					{{ appStore.tenant?.company }}
+				</span>
 			</router-link>
 
 			<nav class="hidden tracking-widest lg:flex lg:gap-8">
