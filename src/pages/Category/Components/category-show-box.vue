@@ -25,9 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div
-		class="mt-16 flex w-4/5 max-w-6xl flex-col items-center gap-10 md:mt-32 md:grid md:w-11/12 md:grid-cols-2 md:grid-rows-1 md:gap-10 lg:w-4/5 lg:gap-20"
-	>
+	<div class="mt-16 flex w-4/5 max-w-6xl flex-col items-center gap-10 md:mt-32 md:grid md:w-11/12 md:grid-cols-2 md:grid-rows-1 md:gap-10 lg:w-4/5 lg:gap-20">
 		<div
 			class="flex flex-col items-center md:col-span-1 md:row-start-1 md:block lg:pb-6"
 			:class="flip === true ? 'md:col-start-1' : 'md:col-start-2'"
@@ -38,20 +36,15 @@ onMounted(() => {
 			>
 				new product
 			</p>
-			<h1
-				class="mt-4 text-center text-4xl font-semibold uppercase text-black md:text-start md:text-5xl lg:text-6xl"
-			>
-				{{ props.item.name }} <br class="hidden md:block" />
-				<span class="text-lg">Code: {{ props.item.sku }}</span>
+			<h1 class="mt-4 text-center text-4xl font-semibold uppercase text-black md:text-start md:text-5xl lg:text-6xl">
+				{{ props.item.name }}
 			</h1>
-			<p
-				class="mb-10 mt-4 text-center text-black opacity-60 md:pr-20 md:text-start"
-			>
-				<span class="text-lg">Category: {{ props.item.category }}</span>
+			<p class="mb-10 mt-4 text-center text-black opacity-60 md:pr-20 md:text-start">
+				<span class="text-lg"><strong>Code:</strong> {{ props.item.sku }}</span>
+				<br>
+				<span class="text-lg"><strong>Category:</strong> {{ props.item.category }}</span>
 			</p>
-			<div
-				class="flex flex-row items-center justify-center gap-4 md:justify-normal"
-			>
+			<div class="flex flex-row items-center justify-center gap-4 md:justify-normal">
 				<ButtonSolid
 					:to="{ name: 'Product', params: { sku: props.item.sku } }"
 					color="light"
