@@ -4,10 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import NavigationCategory from '../../../components/navigation-category.vue'
 
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-fade'
+import 'swiper/swiper-bundle.css'
+
 
 import ButtonSolid from '../../../components/Buttons/button-solid.vue'
 import { useAppStore } from '../../../pinia/appStore'
