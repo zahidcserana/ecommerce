@@ -160,7 +160,7 @@ onBeforeUnmount(() => {
         <span class="text-lg"><strong>Category:</strong> {{ props.item.category }}</span>
       </p>
 
-      <p class="my-8 text-xl font-bold text-black">$ {{ props.item.price }}</p>
+      <p class="my-8 text-xl font-bold text-black">৳ {{ props.item.price }}</p>
 
       <div class="flex">
 		<ButtonSolid

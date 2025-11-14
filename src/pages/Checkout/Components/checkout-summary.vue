@@ -28,7 +28,7 @@ const formStore = useFormStore()
 			<p class="font-semibold tracking-wide text-black text-opacity-60">
 				TOTAL
 			</p>
-			<p class="text-lg font-bold text-black">${{ cartStore.cartValue }}</p>
+			<p class="text-lg font-bold text-black">৳{{ cartStore.cartValue }}</p>
 		</div>
 		<div class="flex flex-row justify-between">
 			<p class="font-semibold tracking-wide text-black text-opacity-60">
@@ -41,18 +41,18 @@ const formStore = useFormStore()
 					'line-through'
 				"
 			>
-				${{ cartStore.shipping }}
+				৳{{ cartStore.shipping }}
 			</p>
 		</div>
 		<div class="flex flex-row justify-between">
 			<p class="font-semibold tracking-wide text-black text-opacity-60">
 				VAT (INCLUDED)
 			</p>
-			<p class="text-lg font-bold text-black">${{ cartStore.getVat }}</p>
+			<p class="text-lg font-bold text-black">৳{{ cartStore.getVat }}</p>
 		</div>
 		<div class="mt-4 flex flex-row justify-between">
 			<p class="font-black tracking-wide text-black">GRAND TOTAL</p>
-			<p class="text-lg font-bold text-black">${{ cartStore.getGrandTotal }}</p>
+			<p class="text-lg font-bold text-black">৳{{ cartStore.getGrandTotal }}</p>
 		</div>
 		<ButtonSolid
 			content="continue & pay"
