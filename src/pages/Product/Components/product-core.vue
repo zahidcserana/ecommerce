@@ -152,12 +152,12 @@ onBeforeUnmount(() => {
         class="mt-4 text-center text-4xl font-semibold uppercase text-black lg:text-start lg:text-6xl"
       >
         {{ props.item.name }}
-        <br class="hidden lg:inline" />
-        <span class="text-lg">Code: {{ props.item.sku }}</span>
       </h1>
 
       <p class="mt-6 text-center text-black opacity-60 lg:pr-20 lg:text-start">
-        <span class="text-lg">Category: {{ props.item.category }}</span>
+        <span class="text-lg"><strong>Code:</strong> {{ props.item.sku }}</span>
+        <br>
+        <span class="text-lg"><strong>Category:</strong> {{ props.item.category }}</span>
       </p>
 
       <p class="my-8 text-xl font-bold text-black">$ {{ props.item.price }}</p>
