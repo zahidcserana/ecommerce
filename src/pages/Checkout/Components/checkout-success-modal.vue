@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
 									{{ cartStore.getFirstItem.product.name }}
 								</p>
 								<p class="text-lg font-bold text-black opacity-60">
-									${{ cartStore.getFirstItem.product.price }}
+									৳{{ cartStore.getFirstItem.product.price }}
 								</p>
 							</div>
 							<p v-if="cartStore.getFirstItem && cartStore.getFirstItem.product" class="ml-auto place-self-center text-lg font-bold text-black opacity-60">
@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
 								Grand Total
 							</p>
 							<p class="text-md font-semibold lg:text-lg">
-								$ {{ cartStore.getGrandTotal }}
+								৳ {{ cartStore.getGrandTotal }}
 							</p>
 						</div>
 					</div>

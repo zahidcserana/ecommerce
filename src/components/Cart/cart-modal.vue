@@ -70,7 +70,7 @@ const cartStore = useCartStore()
 						TOTAL
 					</p>
 					<p class="text-2xl font-bold text-black">
-						${{ cartStore.cartValue }}
+						৳{{ cartStore.cartValue }}
 					</p>
 				</div>
 				<ButtonSolid

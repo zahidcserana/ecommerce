@@ -30,15 +30,25 @@ export const useCartStore = defineStore('cart', {
 			this.showCart = false
 			document.body.classList.remove('overflow-y-hidden')
 		},
-
-		addToCart(item: Product) {
-			const itemKey = item.category + item.id + ''
+		_addItemToCart(item: Product, increment: boolean = true) {
+			const itemKey = item.category + item.id;
 			if (itemKey in this.cart) {
-				this.cart[itemKey].amount = this.cart[itemKey].amount + 1
+				if (increment) {
+					this.cart[itemKey].amount += 1;
+				}
 			} else {
-				this.cart[itemKey] = { product: item, amount: 1 }
+				this.cart[itemKey] = { product: item, amount: 1 };
 			}
 		},
+
+		addToCart(item: Product) {
+			this._addItemToCart(item, true);
+		},
+		buyNow(item: Product, router: any) {
+			this._addItemToCart(item, false);
+			router.push('/checkout');
+		},
+
 		addTestItem() {
 			this.addToCart({
 				id: 0,

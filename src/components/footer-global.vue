@@ -1,106 +1,98 @@
 <script setup lang="ts">
-import facebookIcon from '/public/icons/facebook.svg'
-import twitterIcon from '/public/icons/twitter.svg'
-import instagramIcon from '/public/icons/instagram.svg'
-import { useAppStore } from '../pinia/appStore'
+import facebookIcon from '/public/icons/facebook.svg';
+import twitterIcon from '/public/icons/twitter.svg';
+import instagramIcon from '/public/icons/instagram.svg';
+import { useAppStore } from '../pinia/appStore';
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 </script>
 
 <template>
-	<footer
-		class="relative mt-20 flex h-full w-screen flex-col items-center bg-black md:mt-32 lg:mt-40"
-	>
-		<div
-			class="flex w-4/5 flex-row justify-center md:w-11/12 md:max-w-6xl md:justify-start lg:w-4/5"
-		>
-			<div
-				id="colorStrip"
-				class="absolute top-0 h-1 w-20 max-w-6xl bg-k-main"
-			></div>
-		</div>
-		<div
-			id="container"
-			class="my-10 flex h-full w-4/5 max-w-6xl flex-col justify-center md:w-11/12 lg:w-4/5"
-		>
-			<div
-				id="titleNav"
-				class="mb-10 flex flex-col items-center justify-between md:flex-row"
-			>
-				<router-link
-					to="/"
-					class="mb-8 cursor-pointer text-4xl font-bold text-white subpixel-antialiased transition duration-300 hover:scale-110 hover:text-k-main md:mb-0 md:text-3xl"
-				>
-					{{ appStore.tenant?.company }}
-				</router-link>
-				<nav
-					class="flex flex-col items-center justify-between gap-6 md:flex-row md:items-start md:gap-10"
-				>
-					<router-link
-						class="font-semibold uppercase tracking-wider text-white transition duration-300 hover:text-k-main"
-						to="/"
-						>Home
-					</router-link>
+  <footer id="footer-div" class="relative mt-20 w-full bg-black text-white md:mt-32 lg:mt-40">
+    <!-- Top Gradient Strip -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-1 w-32 bg-gradient-to-r from-k-main to-k-accent rounded-full"></div>
 
-					<router-link
-						v-for="category in appStore.categories"
-						class="font-semibold uppercase tracking-wider text-white transition duration-300 hover:text-k-main"
-						:to="{ path: '/products', query: { category: category } }"
-						>{{ category }}
-					</router-link>
-					<!-- <router-link
-						class="font-semibold uppercase tracking-wider text-white transition duration-300 hover:text-k-main"
-						to="/keycaps"
-						>Keycaps
-					</router-link>
-					<router-link
-						class="font-semibold uppercase tracking-wider text-white transition duration-300 hover:text-k-main"
-						to="/deskmats"
-						>Deskmats
-					</router-link> -->
-				</nav>
-			</div>
-			<div
-				id="textSocials"
-				class="flex flex-col items-center justify-between md:flex-row md:items-start"
-			>
-				<p
-					class="mb-10 text-center tracking-wide opacity-70 md:mb-0 md:w-2/3 md:text-left"
-				>
-					{{ appStore.tenant?.about }}
-				</p>
-				<nav class="flex flex-row gap-4 md:self-end">
-					<a class="transition duration-300 hover:-translate-y-0.5" href="">
-						<img
-							loading="lazy"
-							class="aspect-square h-6"
-							:src="facebookIcon"
-							alt=""
-						/>
-					</a>
-					<a class="transition duration-300 hover:-translate-y-0.5" href="">
-						<img
-							loading="lazy"
-							class="aspect-square h-6"
-							:src="twitterIcon"
-							alt=""
-						/>
-					</a>
-					<a class="transition duration-300 hover:-translate-y-0.5" href="">
-						<img
-							loading="lazy"
-							class="aspect-square h-6"
-							:src="instagramIcon"
-							alt=""
-						/>
-					</a>
-				</nav>
-			</div>
-			<p
-				class="mt-16 text-center text-sm font-semibold tracking-wide text-white opacity-60 md:text-start"
-			>
-				Copyright 2025. All Rights Reserved
-			</p>
-		</div>
-	</footer>
+    <!-- Main Container -->
+    <div class="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16 md:px-4 lg:px-8">
+      
+      <!-- Logo & Navigation -->
+      <div class="flex flex-col items-center justify-between gap-8 md:flex-row md:items-center">
+        <router-link
+          to="/"
+          class="text-4xl font-bold subpixel-antialiased transition-transform duration-300 hover:scale-110 hover:text-k-main md:text-3xl"
+        >
+          {{ appStore.tenant?.company }}
+        </router-link>
+
+        <nav class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
+          <router-link
+            class="font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-k-main"
+            to="/"
+          >
+            Home
+          </router-link>
+          <router-link
+            v-for="category in appStore.categories"
+            :key="category"
+            class="font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-k-main"
+            :to="{ path: '/products', query: { category } }"
+          >
+            {{ category }}
+          </router-link>
+        </nav>
+      </div>
+
+      <!-- Contact Info & Socials -->
+      <div class="flex flex-col gap-8 md:flex-row md:justify-between">
+        <!-- Address -->
+        <div class="text-center md:text-left md:w-1/3">
+          <span class="block mb-2 text-2xl font-bold text-white">Address:</span>
+          <p class="tracking-wide text-white/90">
+            {{ appStore.tenant?.address }}, {{ appStore.tenant?.city }}
+          </p>
+        </div>
+
+        <!-- Phone -->
+        <div class="text-center md:text-left md:w-1/3">
+          <span class="block mb-2 text-2xl font-bold text-white">Phone:</span>
+          <p class="tracking-wide text-white/90">{{ appStore.tenant?.phone }}</p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex justify-center gap-6 md:justify-end">
+          <a
+            href="#"
+            aria-label="Facebook"
+            class="transition-transform duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <img class="h-6 w-6" :src="facebookIcon" alt="Facebook" />
+          </a>
+          <a
+            href="#"
+            aria-label="Twitter"
+            class="transition-transform duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <img class="h-6 w-6" :src="twitterIcon" alt="Twitter" />
+          </a>
+          <a
+            href="#"
+            aria-label="Instagram"
+            class="transition-transform duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <img class="h-6 w-6" :src="instagramIcon" alt="Instagram" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-px w-full bg-white/20"></div>
+
+      <!-- Copyright -->
+     <p class="text-center text-sm font-semibold text-white/60 md:text-left">
+		&copy; 
+		<a href="https://analyticalj.com/" target="_blank" class="text-k-main hover:underline">AnalyticalJ</a>
+		All right reserved.
+	</p>
+    </div>
+  </footer>
 </template>

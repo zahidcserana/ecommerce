@@ -43,11 +43,12 @@ const featureProducts = appStore.featureProducts
 					</router-link>
 					<div class="relative z-10 col-span-3 flex h-full w-full flex-col justify-center bg-k-main md:pl-4 md:pr-20 lg:pl-6 lg:pr-24">
 						<h2 class="text-center text-5xl font-semibold uppercase md:text-start lg:text-6xl">
-							{{ product?.sku }} <br />
 							{{ product?.name }}
 						</h2>
 						<p class="mb-8 mt-4 text-center tracking-wide md:mb-10 md:text-start">
-							{{ product?.description }}
+							<span class="text-lg"><strong>Code:</strong> {{ product?.sku }}</span>
+							<br>
+							<span class="text-lg"><strong>Category:</strong> {{ product?.category }}</span>
 						</p>
 						<ButtonSolid
 							:to="{ name: 'Product', params: { sku: product?.sku } }"

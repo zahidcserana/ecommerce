@@ -1,51 +1,94 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
+import NavigationCategory from '../../../components/navigation-category.vue'
+
+import 'swiper/swiper-bundle.css'
+
+
 import ButtonSolid from '../../../components/Buttons/button-solid.vue'
-import { useAppStore } from '../../../pinia/appStore';
+import { useAppStore } from '../../../pinia/appStore'
 
 const appStore = useAppStore()
+
+// Reference to the Swiper instance
+const swiperRef = ref<any>(null)
+
+const onSwiper = (swiper: any) => {
+  swiperRef.value = swiper
+}
+
+// Pause autoplay when mouse enters
+const handleMouseEnter = () => {
+  if (swiperRef.value?.autoplay) swiperRef.value.autoplay.stop()
+}
+
+// Resume autoplay when mouse leaves
+const handleMouseLeave = () => {
+  if (swiperRef.value?.autoplay) swiperRef.value.autoplay.start()
+}
 </script>
 
 <template>
-	<section
-		class="flex w-full flex-col items-center overflow-hidden rounded-b-md bg-k-black"
-	>
-		<div
-			class="relative mt-20 flex max-w-6xl flex-col text-center transition-transform duration-200 sm:w-4/5 md:grid md:w-11/12 md:grid-cols-2 md:text-start lg:w-4/5"
-		>
-			<div
-				class="relative z-10 flex flex-col items-center justify-center pb-6 sm:ml-0 md:ml-10 md:items-start lg:ml-0"
-			>
-				<p class="md:text-md text-sm font-light uppercase tracking-broad">
-					new product
-				</p>
-				<h1
-					class="relative mt-4 text-5xl font-semibold uppercase text-white md:text-6xl"
-				>
-					{{ appStore.randomFeatureProduct?.sku }} <br class="hidden md:block lg:hidden" />
-					{{ appStore.randomFeatureProduct?.name }} <br />
-					{{ appStore.randomFeatureProduct?.category }}
-				</h1>
-				<p class="mb-10 mt-5 md:opacity-90">
-					{{ appStore.randomFeatureProduct?.description }}
-				</p>
-				<ButtonSolid
-					:to="{ name: 'Product', params: { sku: appStore.randomFeatureProduct?.sku } }"
-					content="see product"
-					color="light"
-					add="font-bold mb-20"
-				/>
-			</div>
-			<div
-				class="absolute bottom-0 z-0 aspect-auto w-full opacity-30 md:relative md:z-10 md:opacity-100"
-			>
-				<img
-					class="relative top-12 scale-[175%] md:top-20 md:scale-[175%] lg:top-12 lg:scale-150"
-					:src="appStore.tenant?.store_image"
-					alt=""
-					width="1920"
-					height="1920"
-				/>
-			</div>
-		</div>
-	</section>
+  <section
+    class="w-full overflow-hidden rounded-b-md bg-k-black"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
+    <Swiper
+      :modules="[Navigation, Pagination, Autoplay, EffectFade]"
+      :autoplay="{
+        delay: 3000,
+        disableOnInteraction: false,
+      }"
+      :loop="true"
+      effect="fade"
+      :pagination="{ clickable: true }"
+      navigation
+      class="w-full h-[70vh] md:h-[80vh]"
+      @swiper="onSwiper"
+    >
+      <SwiperSlide
+        v-for="(banner, index) in appStore.tenant?.banner_image || []"
+        :key="index"
+      >
+        <div class="relative w-full h-full">
+          <img
+            :src="banner"
+            alt="Banner"
+            class="object-cover w-full h-full"
+          />
+          <div
+            class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center text-white"
+          >
+            <h1 class="text-4xl md:text-6xl font-bold uppercase drop-shadow-lg">
+              {{ appStore.tenant?.company }}
+            </h1>
+            <p class="mt-3 text-lg opacity-90">
+              {{ appStore.tenant?.store_tagline || 'Welcome to our store' }}
+            </p>
+
+            <ButtonSolid
+              to="/all"
+              content="Shop Now"
+              color="light"
+              add="font-bold mt-6"
+            />
+          </div>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </section>
+  <NavigationCategory color="k-black"/>
 </template>
+
+<style scoped>
+:deep(.swiper-pagination-bullet) {
+  background: white;
+}
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev) {
+  color: white;
+}
+</style>

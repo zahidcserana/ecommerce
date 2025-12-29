@@ -90,10 +90,15 @@ export interface Tenant {
     name: string
     company: string
     about: string
+    phone: string
+    address: string
+    city: string
     moto: string
     slug: string
     store_domain: string
+    store_tagline: string
     store_image: string
+    banner_image: string[]
     image: string
 }
 

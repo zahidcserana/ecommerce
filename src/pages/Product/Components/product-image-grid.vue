@@ -1,15 +1,17 @@
 <script setup lang="ts">
-// delete later
 const props = defineProps<{
-	topSrc: string
-	botSrc: string
-	rightSrc: string
+	images: string[]
 }>()
+
+const randomImage = (() => {
+	const randomIndex = Math.floor(Math.random() * props.images.length)
+	return props.images[randomIndex]
+})
+
 </script>
 
 <template>
 	<section
-		v-if="props.topSrc && props.botSrc && props.rightSrc"
 		class="mt-16 flex h-full w-full flex-col items-center bg-white lg:mt-32"
 	>
 		<div
@@ -18,19 +20,19 @@ const props = defineProps<{
 			<img
 				loading="lazy"
 				class="col-span-3 col-start-1 row-span-1 row-start-1 aspect-video h-full w-full rounded-md object-cover lg:aspect-auto"
-				:src="props.topSrc"
+				:src="randomImage()"
 				alt=""
 			/>
 			<img
 				loading="lazy"
 				class="col-span-3 col-start-1 row-span-1 row-start-2 aspect-video h-full w-full rounded-md object-cover lg:aspect-auto"
-				:src="props.botSrc"
+				:src="randomImage()"
 				alt=""
 			/>
 			<img
 				loading="lazy"
 				class="order-first col-span-4 col-start-4 row-start-1 row-end-3 aspect-square h-full w-full rounded-md object-cover lg:order-none lg:aspect-auto"
-				:src="props.rightSrc"
+				:src="randomImage()"
 				alt=""
 			/>
 		</div>
