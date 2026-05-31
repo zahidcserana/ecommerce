@@ -14,7 +14,7 @@
     "axios": "^1.12.2",
     "caniuse-lite": "^1.0.30001754",
     "pinia": "^2.1.6",
-    "pinia-plugin-persistedstate": "^4.5.0",
+    "pinia-plugin-persistedstate": "^3.2.3",
     "swiper": "^12.0.3",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
